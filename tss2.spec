@@ -6,16 +6,14 @@
 %global incname ibmtss
 
 Name:		tss2
-Version:	1.5.0
-Release:	1%{?dist}
+Version:	1470
+Release:	7%{?dist}
 Summary:	IBM's TCG Software Stack (TSS) for TPM 2.0 and related utilities
 
 License:	BSD
 URL:		http://sourceforge.net/projects/ibmtpm20tss/
 Source0:	https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
 Patch1: flags-fixup.patch
-Patch2: hash_generate.patch
-Patch3: picfix.patch
 
 BuildRequires:  gcc
 BuildRequires:	help2man
@@ -47,7 +45,7 @@ order to build TSS 2.0 applications.
 pushd utils
 CCFLAGS="%{optflags}" \
 LNFLAGS="%{__global_ldflags}" \
-%{make_build} -f makefile.fedora
+%{make_build} -f makefiletpmc
 popd
 
 %install
@@ -66,6 +64,7 @@ for f in *; do
 done
 cp -p *.so.1.1 %{buildroot}/%{_libdir}
 cp -p %{incname}/*.h %{buildroot}/%{_includedir}/%{incname}/
+cp -p ekutils.h cryptoutils.h %{buildroot}/%{_includedir}/%{incname}/
 cp -p man/man1/tss*.1 %{buildroot}/%{_mandir}/man1/
 popd
 
@@ -76,6 +75,7 @@ rm -f libibmtss.so.1
 ln -sf libibmtss.so.1.1 libibmtss.so.1
 rm -f libibmtss.so
 ln -sf libibmtss.so.1 libibmtss.so
+ln -sf libibmtssutils.so.1.1 libibmtssutils.so
 popd
 
 %ldconfig_scriptlets
@@ -85,11 +85,14 @@ popd
 %{_bindir}/tss*
 %{_libdir}/libibmtss.so.1
 %{_libdir}/libibmtss.so.1.*
+%{_libdir}/libibmtssutils.so.1
+%{_libdir}/libibmtssutils.so.1.*
 %attr(0644, root, root) %{_mandir}/man1/tss*.1*
 
 %files devel
 %{_includedir}/%{incname}
 %{_libdir}/libibmtss.so
+%{_libdir}/libibmtssutils.so
 %doc ibmtss.doc
 
 %changelog
