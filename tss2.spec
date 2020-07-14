@@ -7,7 +7,7 @@
 
 Name:		tss2
 Version:	1470
-Release:	7%{?dist}
+Release:	1%{?dist}
 Summary:	IBM's TCG Software Stack (TSS) for TPM 2.0 and related utilities
 
 License:	BSD
@@ -96,6 +96,9 @@ popd
 %doc ibmtss.doc
 
 %changelog
+* Tue Jul 14 2020 Roberto Sassu <roberto.sassu@huawei.com> - 1470-1
+- Import in openEuler
+
 * Fri Feb 14 2020 Tom Stellard <tstellar@redhat.com> - 1331-5
 - Use make_build macro
 - https://docs.fedoraproject.org/en-US/packaging-guidelines/#_parallel_make
