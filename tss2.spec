@@ -7,7 +7,7 @@
 
 Name:		tss2
 Version:	1470
-Release:	1%{?dist}
+Release:	2
 Summary:	IBM's TCG Software Stack (TSS) for TPM 2.0 and related utilities
 
 License:	BSD
@@ -43,7 +43,7 @@ order to build TSS 2.0 applications.
 %build
 # nonstandard variable names are used in place of CFLAGS and LDFLAGS
 pushd utils
-CCFLAGS="%{optflags}" \
+CCFLAGS="%{optflags} -fcommon" \
 LNFLAGS="%{__global_ldflags}" \
 %{make_build} -f makefiletpmc
 popd
@@ -96,6 +96,9 @@ popd
 %doc ibmtss.doc
 
 %changelog
+* Fri Jul 30 2021 Guoxiaoqi <guoxiaoqi2@huawei.com> - 1470-2
+- Fix build with gcc-10
+
 * Tue Jul 14 2020 Roberto Sassu <roberto.sassu@huawei.com> - 1470-1
 - Import in openEuler
 
