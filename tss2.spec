@@ -7,7 +7,7 @@
 
 Name:		tss2
 Version:	1470
-Release:	2
+Release:	3
 Summary:	IBM's TCG Software Stack (TSS) for TPM 2.0 and related utilities
 
 License:	BSD
@@ -17,7 +17,7 @@ Patch1: flags-fixup.patch
 
 BuildRequires:  gcc
 BuildRequires:	help2man
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel chrpath
 Requires:	openssl
 
 %description
@@ -78,6 +78,8 @@ ln -sf libibmtss.so.1 libibmtss.so
 ln -sf libibmtssutils.so.1.1 libibmtssutils.so
 popd
 
+chrpath -d %{buildroot}%{_bindir}/*
+
 %ldconfig_scriptlets
 
 %files
@@ -96,6 +98,9 @@ popd
 %doc ibmtss.doc
 
 %changelog
+* Thu Sep 09 2021 sunguoshuai <sunguoshuai@huawei.com> 1470-3
+- del rpath
+
 * Fri Jul 30 2021 Guoxiaoqi <guoxiaoqi2@huawei.com> - 1470-2
 - Fix build with gcc-10
 
