@@ -1,0 +1,25 @@
+From 75f03b034257954c7e4ebf6a43a0006913048228 Mon Sep 17 00:00:00 2001
+From: jinlun <jinlun@huawei.com>
+Date: Mon, 13 Mar 2023 11:21:20 +0800
+Subject: [PATCH] Remove RPATH Link Option
+
+---
+ utils/makefiletpmc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/makefiletpmc b/utils/makefiletpmc
+index 7de2439..cb01a66 100644
+--- a/utils/makefiletpmc
++++ b/utils/makefiletpmc
+@@ -98,7 +98,7 @@ LNLLIBS += -lcrypto
+ # link - for applications, TSS path, TSS and OpenSSl libraries
+ 
+ # hardening flags for linking executables
+-LNAFLAGS += -pie -Wl,-z,now -Wl,-rpath,.
++LNAFLAGS += -pie -Wl,-z,now.
+ 
+ LNALIBS +=  -libmtssutils -libmtss
+ 
+-- 
+2.27.0
+
