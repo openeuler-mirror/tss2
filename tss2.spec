@@ -7,13 +7,14 @@
 
 Name:		tss2
 Version:	1470
-Release:	2
+Release:	3
 Summary:	IBM's TCG Software Stack (TSS) for TPM 2.0 and related utilities
 
 License:	BSD
 URL:		http://sourceforge.net/projects/ibmtpm20tss/
 Source0:	https://sourceforge.net/projects/ibmtpm20tss/files/ibmtss%{version}.tar.gz
 Patch1: flags-fixup.patch
+Patch2: Remove-RPATH-Link-Option.patch
 
 BuildRequires:  gcc
 BuildRequires:	help2man
@@ -96,6 +97,9 @@ popd
 %doc ibmtss.doc
 
 %changelog
+* Mon Mar 13 2023 jinlun <jinlun@huawei.com> -1470-3
+- Remove RPATH link option.
+
 * Fri Jul 30 2021 Guoxiaoqi <guoxiaoqi2@huawei.com> - 1470-2
 - Fix build with gcc-10
 
