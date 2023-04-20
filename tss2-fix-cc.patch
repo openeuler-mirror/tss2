@@ -1,0 +1,11 @@
+--- a/utils/makefiletpmc	2019-04-25 01:48:55.000000000 +0800
++++ b/utils/makefiletpmc	2023-04-17 12:36:01.400854181 +0800
+@@ -39,7 +39,7 @@
+ 
+ # C compiler
+ 
+-CC = /usr/bin/gcc
++CC ?= /usr/bin/gcc
+ 
+ # compile - common flags for TSS library and applications
+ 
